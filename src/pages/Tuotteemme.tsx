@@ -1,11 +1,27 @@
 import React, { useContext } from "react";
 import { LanguageContext } from "src/LanguageContext";
 
-export default function Tuotteemme() {
+interface CartItem {
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+}
+
+interface TuotteemmeProps {
+    setItems: (callback: (prevItems: CartItem[]) => CartItem[]) => void;
+}
+
+export default function Tuotteemme({ setItems }: TuotteemmeProps) {
     const { language } = useContext(LanguageContext) as {
         language: string;
         setLanguage: (language: string) => void;
     };
+
+    const handleAddToCart = (itemId: CartItem) => {
+        setItems((prevItems: CartItem[]) => [...prevItems, itemId]);
+    };
+
     return (
         <>
             <div className="container mx-auto text-center mt-20">
@@ -84,14 +100,24 @@ export default function Tuotteemme() {
                                     : "Interested in beekeeping and love honey? Beehive is a great way to observe the life of a beehive for one season. It is also a great gift for someone interested in bees. When you buy a beehive, we will regularly send you updates from the beehive via email. Of course, at the end of the harvest season, we will collect the honey and deliver it to the recipient immediately after extraction. In addition to regular hive updates, the package includes 5 jars of honey (350g). The recipient will also receive a diploma of the beehive by mail."}
                             </p>
                             <div className="mt-4 text-right">
-                                <a
-                                    href="https://holvi.com/shop/WbXD2B/product/74a78df2a6bf30c97d4a5a6bbe3fbb25/"
-                                    target="_blank"
-                                    rel="noreferrer"
+                                <button
                                     className="text-blue-500 hover:text-blue-700 underline"
+                                    onClick={() =>
+                                        handleAddToCart({
+                                            id: 1, // Provide a unique id for the item
+                                            name:
+                                                language === "fi"
+                                                    ? "Iso kummipesä"
+                                                    : "Big beehive",
+                                            price: 49, // Set the actual price
+                                            quantity: 1, // Set the initial quantity
+                                        })
+                                    }
                                 >
-                                    {language === "fi" ? "TILAA" : "ORDER NOW"}
-                                </a>
+                                    {language === "fi"
+                                        ? "LISÄÄ OSTOSKORIIN"
+                                        : "ADD TO CART"}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -123,14 +149,24 @@ export default function Tuotteemme() {
                                     : "Interested in beekeeping and love honey? Beehive is a great way to observe the life of a beehive for one season. It is also a great gift for someone interested in bees. When you buy a beehive, we will regularly send you updates from the beehive via email. Of course, at the end of the harvest season, we will collect the honey and deliver it to the recipient immediately after extraction. In addition to regular hive updates, the package includes 3 jars of honey (350g). The recipient will also receive a diploma of the beehive by mail."}
                             </p>
                             <div className="mt-4 text-right">
-                                <a
-                                    href="https://holvi.com/shop/WbXD2B/product/d216cdfbf6aeabecaa77955c217444c7/"
-                                    target="_blank"
-                                    rel="noreferrer"
+                                <button
                                     className="text-blue-500 hover:text-blue-700 underline"
+                                    onClick={() =>
+                                        handleAddToCart({
+                                            id: 2, // Provide a unique id for the item
+                                            name:
+                                                language === "fi"
+                                                    ? "Pieni kummipesä"
+                                                    : "Small beehive",
+                                            price: 35, // Set the actual price
+                                            quantity: 1, // Set the initial quantity
+                                        })
+                                    }
                                 >
-                                    {language === "fi" ? "TILAA" : "ORDER NOW"}
-                                </a>
+                                    {language === "fi"
+                                        ? "LISÄÄ OSTOSKORIIN"
+                                        : "ADD TO CART"}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -243,61 +279,62 @@ export default function Tuotteemme() {
                                 PROPOLIS
                             </h5>
 
-
                             <p className="grey-text smaller-text font-semibold">
                                 {language === "fi"
                                     ? "Myyn propolista lastuina"
                                     : "I sell propolis as chips"}
                             </p>
                             <p className="mt-4 text-gray-700">
-                            {language === "fi" ? (
-                                <>
-                                    Propolikseksi sanotaan ainetta jolla
-                                    mehiläiset kittaavat turhat raot pesässä.
-                                    Propoliksella on desinfioiva vaikutus
-                                    mehiläispesässä. Mehiläiset keräävät
-                                    aineksia propolikseen pensaiden ja puiden
-                                    silmuista. Silmut erittävät pihkamaisia ja
-                                    tuoksuvia hartsimaisia aineita.
-                                    <br />
-                                    <br />
-                                    Lisätietoa propoliksesta voit lukea
-                                    esimerkiksi täältä:{" "}
-                                    <a
-                                        href="https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/"
-                                        target="_blank"
-                                        className="text-yellow-600 hover:text-yellow-800"
-                                    >
-                                        https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/
-                                    </a>
-                                    <br />
-                                    <br />
-                                    (Tulossa lisää 2023!)
-                                </>
-                            ) : (
-                                <>
-                                    Propolis is a substance bees use to seal off
-                                    unwanted holes in the hive. Propolis has a
-                                    disinfectant effect in the beehive. Bees
-                                    collect the ingredients for propolis from
-                                    the buds of trees and shrubs. Buds secrete
-                                    resinous and fragrant resinous substances.
-                                    <br />
-                                    <br />
-                                    More information about propolis can be found
-                                    here:{" "}
-                                    <a
-                                        href="https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/"
-                                        target="_blank"
-                                        className="text-yellow-600 hover:text-yellow-800"
-                                    >
-                                        https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/
-                                    </a>
-                                    <br />
-                                    <br />
-                                    (Coming soon 2023!)
-                                </>
-                            )}
+                                {language === "fi" ? (
+                                    <>
+                                        Propolikseksi sanotaan ainetta jolla
+                                        mehiläiset kittaavat turhat raot
+                                        pesässä. Propoliksella on desinfioiva
+                                        vaikutus mehiläispesässä. Mehiläiset
+                                        keräävät aineksia propolikseen pensaiden
+                                        ja puiden silmuista. Silmut erittävät
+                                        pihkamaisia ja tuoksuvia hartsimaisia
+                                        aineita.
+                                        <br />
+                                        <br />
+                                        Lisätietoa propoliksesta voit lukea
+                                        esimerkiksi täältä:{" "}
+                                        <a
+                                            href="https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/"
+                                            target="_blank"
+                                            className="text-yellow-600 hover:text-yellow-800"
+                                        >
+                                            https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/
+                                        </a>
+                                        <br />
+                                        <br />
+                                        (Tulossa lisää 2023!)
+                                    </>
+                                ) : (
+                                    <>
+                                        Propolis is a substance bees use to seal
+                                        off unwanted holes in the hive. Propolis
+                                        has a disinfectant effect in the
+                                        beehive. Bees collect the ingredients
+                                        for propolis from the buds of trees and
+                                        shrubs. Buds secrete resinous and
+                                        fragrant resinous substances.
+                                        <br />
+                                        <br />
+                                        More information about propolis can be
+                                        found here:{" "}
+                                        <a
+                                            href="https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/"
+                                            target="_blank"
+                                            className="text-yellow-600 hover:text-yellow-800"
+                                        >
+                                            https://hunaja.net/hunajatietoa/muut-mehilaistuotteet/propolis/
+                                        </a>
+                                        <br />
+                                        <br />
+                                        (Coming soon 2023!)
+                                    </>
+                                )}
                             </p>
                             <div className="mt-4 text-right">
                                 <a

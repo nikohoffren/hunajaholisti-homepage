@@ -1,7 +1,8 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 import { LanguageContext } from "./LanguageContext";
+// import ShoppingCartIcon from "./components/ShoppingCartIcon";
 
 interface CustomLinkProps {
     to: string;
@@ -79,6 +80,16 @@ export default function Navbar() {
                             setLanguage={setLanguage}
                             hoverClass="hover:shadow-lg"
                         />
+                    </li>
+                    <li className="px-5 py-3 lg:px-0 lg:py-0">
+                        <Link
+                            to="/cart"
+                            className="flex items-center space-x-1 text-gray-600 hover:text-gray-800"
+                            onClick={toggleSideNav}
+                        >
+                            {/* <ShoppingCartIcon /> */}
+                            <span>Cart</span>
+                        </Link>
                     </li>
                 </ul>
             </nav>
