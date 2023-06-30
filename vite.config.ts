@@ -5,11 +5,11 @@ import WindiCSS from "vite-plugin-windicss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [reactRefresh(), tsconfigPaths(), WindiCSS()],
-    resolve: {
-        alias: [],
-    },
-    build: {
-        target: "esnext",
-    },
+  plugins: [reactRefresh(), tsconfigPaths(), WindiCSS()],
+  resolve: {
+    alias: [],
+  },
+  build: {
+    target: "esnext",
+  },
 });

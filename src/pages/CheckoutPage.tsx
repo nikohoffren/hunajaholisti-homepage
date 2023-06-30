@@ -4,7 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import PaymentForm from '../components/PaymentForm';
 
-const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+const stripePublishableKey = process.env.VITE_STRIPE_PUBLISHABLE_KEY ?? '';
 const stripePromise = loadStripe(stripePublishableKey);
 
 const CheckoutPage: React.FC = () => {
