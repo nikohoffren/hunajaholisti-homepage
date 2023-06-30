@@ -5,7 +5,3 @@
 
 [build]
 functions = "functions"
-
-[build.environment]
-STRIPE_PUBLISHABLE_KEY = "pk_test_51Mh61wJWNUHUmtvGf80SxOw5CUErnvAdrRMp2ip8I1rfwQnAht2y6AGDsCp3TzbQd7ZX94pgGMQ1saWWe3qBuFjZ00uwXzdsPK"
-STRIPE_SECRET_KEY = "sk_test_51Mh61wJWNUHUmtvGI23FMJktFpQwFcmLtLj7LbltEnP9NERLACdI3vZZcf3DXwdFa2MZVSQXKRodYbGAr8qI0IxF00D3ih0OU"
