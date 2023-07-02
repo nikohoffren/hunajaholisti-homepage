@@ -17,6 +17,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentSuccess }) => {
 
   const handlePayment = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log("Payment")
 
     if (!stripe || !elements) {
       return;
