@@ -1,10 +1,8 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import tsconfigPaths from 'vite-plugin-tsconfig-paths';
 import WindiCSS from 'vite-plugin-windicss';
 
-// Load environment variables from .env
-import { loadEnv } from 'vite';
 
 export default defineConfig(({ mode }) => {
   // Load environment variables
