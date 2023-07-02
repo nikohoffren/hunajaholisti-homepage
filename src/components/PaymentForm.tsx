@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { loadStripe, StripeCardElementChangeEvent } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+  loadStripe,
+  StripeCardElementChangeEvent,
+} from "@stripe/stripe-js";
+import {
+  Elements,
+  CardElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
 import axios from "axios";
 
-const stripePublishableKey = process.env.VITE_STRIPE_PUBLISHABLE_KEY ?? '';
-const stripePromise = loadStripe(stripePublishableKey)
+const stripePublishableKey = process.env.VITE_STRIPE_PUBLISHABLE_KEY ?? "";
+const stripePromise = loadStripe(stripePublishableKey);
 
 interface PaymentFormProps {
   onPaymentSuccess: () => void;
@@ -17,7 +25,6 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentSuccess }) => {
 
   const handlePayment = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Payment")
 
     if (!stripe || !elements) {
       return;
@@ -68,9 +75,42 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentSuccess }) => {
   return (
     <Elements stripe={stripePromise}>
       <form onSubmit={handlePayment} className="p-4 bg-gray-800 text-white">
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-white">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="p-2 border border-gray-500 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="address" className="block text-white">
+            Address
+          </label>
+          <input
+            type="text"
+            id="address"
+            className="p-2 border border-gray-500 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="phone" className="block text-white">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            className="p-2 border border-gray-500 rounded"
+            required
+          />
+        </div>
         <CardElement
           options={{ style: { base: { color: "#fff" } } }}
-          className="p-3 bg-gray-700"
+          className="p-3 bg-gray-700 mb-4"
         />
         {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
         <button
