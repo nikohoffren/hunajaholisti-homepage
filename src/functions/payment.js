@@ -3,7 +3,7 @@ const stripe = require('stripe');
 
 dotenv.config();
 
-const stripeSecretKey = process.env.VITE_STRIPE_SECRET_KEY ?? '';
+const stripeSecretKey = process.env.VITE_STRIPE_SECRET_KEY;
 const stripeInstance = stripe(stripeSecretKey);
 
 exports.handler = async (event) => {
